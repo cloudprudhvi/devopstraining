@@ -1,0 +1,7 @@
+####commands###
+
+git add <filename>  moves the file from working directory to staging area
+git add . <to add multiple files>
+git status
+git commit -m "some message"
+git push origin <branch name>  to push to remote repository
