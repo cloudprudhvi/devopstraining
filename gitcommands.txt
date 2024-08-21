@@ -8,5 +8,3 @@ git push origin <branch name>  to push to remote repository
 git pull origin <branch_name> to pull teh changes
 
 git restore <filename>  to clear the changes in working area
-
-git log --oneline
