@@ -8,3 +8,5 @@ git push origin <branch name>  to push to remote repository
 git pull origin <branch_name> to pull teh changes
 
 git restore <filename>  to clear the changes in working area
+git checkout -b <branchname>  to create and switch to the branch
+git checkout <branchname> to switch the branch
