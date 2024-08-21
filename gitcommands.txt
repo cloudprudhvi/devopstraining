@@ -12,3 +12,7 @@ git branch <branchname>
 git checkout <branchname> to switch the branch
 git checkout -b <branchname>  to create and switch to the branch
 git branch -D <branch_name>
+
+Merge:
+
+changes from one branch to another branch is merged.
