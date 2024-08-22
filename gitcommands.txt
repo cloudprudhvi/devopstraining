@@ -16,3 +16,5 @@ git branch -D <branch_name>
 Merge:
 
 changes from one branch to another branch is merged.
+
+git clone <url> the complete repository will download into your local machine
