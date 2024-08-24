@@ -207,6 +207,40 @@ do
   echo "Hello, $name!"
 done
 ```
+
+### Shell Script to Determine Even or Odd Status of Positional Arguments
+
+#### Script Using Individual Positional Parameters `$1`
+
+```bash
+#!/bin/bash
+
+# This script checks if each provided positional argument is even or odd using $1, $2, etc.
+
+# Checking $1
+if [ $(($1 % 2)) -eq 0 ]
+then
+    echo "$1 is even"
+else
+    echo "$1 is odd"
+fi
+```
+
+# This script checks if each provided positional argument is even or odd using $@
+
+```bash
+#!/bin/bash
+for num in "$@"
+do
+    if [ $(($num % 2)) -eq 0 ]
+    then
+        echo "$num is even"
+    else
+        echo "$num is odd"
+    fi
+done
+```
+
 ### While Loop
 The `while` loop continues to execute a set of commands as long as the given condition is true.
 
