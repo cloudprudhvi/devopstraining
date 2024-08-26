@@ -268,3 +268,25 @@ do
   echo "You entered: $input"
 done
 ```
+### Script to monitor CPU Usage
+```bash
+#!/bin/bash
+
+# Function to send an alert
+send_alert() {
+    echo "ALERT: CPU usage is above threshold! Current usage: $1%"
+}
+
+# Take the input from user
+read -p "Enter the CPU usage threshold: " threshold
+
+# Get the current CPU usage (user + system)
+cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}')
+
+# Checking if the CPU usage exceeds the threshold
+if (( $(echo "$cpu_usage > $threshold" | bc -l) )); then
+    send_alert "$cpu_usage"
+else
+    echo "CPU usage is within the threshold."
+fi
+```
