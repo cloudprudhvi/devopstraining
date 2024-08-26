@@ -290,3 +290,37 @@ else
     echo "CPU usage is within the threshold."
 fi
 ```
+### Another way to monitor CPU
+```bash
+#!/bin/bash
+read -p "Enter the CPU usage threshold: " threshold
+
+cpu_idle=$(vmstat | tail -1 | awk '{print $15}')
+cpu_usage=$((100 - cpu_idle))
+
+if [ "$cpu_usage" -gt "$threshold" ]; then
+    echo "ALERT: CPU usage is above threshold! Current usage: $cpu_usage%"
+else
+    echo "CPU usage is within the threshold."
+fi
+
+```
+### GET ERROR CODE FROM LOG FILE
+```bash
+#!/bin/bash
+
+# Provide the log file path
+read -p "Enter the Apache log file path:" log_file
+log_file=${log_file:-/var/log/apache2/access.log}
+
+# Get the error codes from the user
+read -p "Enter the error codes separated by space (e.g., 404 500 403): " -a error_codes
+
+# Loop through each error code and count its occurrences in the log file
+for code in "${error_codes[@]}"; do
+    count=$(grep " $code " "$log_file" | wc -l)
+    echo "Error code $code occurred $count times in the log file."
+done
+
+```
+
