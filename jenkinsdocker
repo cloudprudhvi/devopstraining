@@ -1,0 +1,16 @@
+sudo yum update -y
+sudo yum -y install docker
+Start Docker
+sudo service docker start
+Access Docker commands in ec2-user user
+sudo usermod -a -G docker ec2-user
+sudo chmod 666 /var/run/docker.sock
+docker version
+docker run -d -p 8080:8080 -p 50000:50000 --restart=on-failure -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk17
+
+docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED              STATUS              PORTS                                                                                      NAMES
+41deccbac538   jenkins/jenkins:lts-jdk17   "/usr/bin/tini -- /u…"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp, 0.0.0.0:50000->50000/tcp, :::50000->50000/tcp   zen_almeida
+docker exec -it conatinerid bash
+
+cat /var/jenkins_home/initialAdminPassword
