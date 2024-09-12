@@ -54,4 +54,24 @@ Make sure both the Master and Slave nodes are in same VPC and subnet. Launch Ama
    cat id_rsa
  
    ```
+
+### Step 3: Configure Master server with Slave Configuration
+
+- **Step1**: Click on Manage jenkins from Jenkins homepage.
+- **Step2**: Under System Configuration click Nodes
+- **Step3**: Now in the node page click on New Node this will ask you to enter Nodename enter the name, select as permanent agent and Create.
+- **Step4**: This is configuration Page, we will need to provide some information regarding the node we launched in aws.
+              - **RemoteRootDirectory**: here in this block jenkins is asking us to confirm where the new jobs should be executed in SlaveNode, ALl the jobs which will be built, will be in the directory provided. For Eg: we can use **/opt/data/**
+              - **Labels**: Add the label name for this node, Remember this label will be required for any job to run on this Node.
+              - **UsageMethod**: Select Jobs matching labels 
+              - **LaunchMethod**: launch via ssh, Provide th ehostname details,(Ipaddress of the slave server)
+                                Since we have no credentails configured click on Add Credentails and in the dropdown, select ssh username with key, Provide the username as root and click on add file manually, here you need to paste teh private key. (Refer: In Step2 while generating ssh) Create Credentails.
+              Now again the teh launch method, select the credentails and select Non Verifying Verification Strategy.
+
+Keep the rest of the configuration same and save it.
+
+Headover to Nodes in manage jenkins you should see the Node as connected.
+
+
+              
    
