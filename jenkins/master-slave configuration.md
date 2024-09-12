@@ -55,22 +55,25 @@ Make sure both the Master and Slave nodes are in same VPC and subnet. Launch Ama
  
    ```
 
-### Step 3: Configure Master server with Slave Configuration
+### Step 3: Configure Master Server with Slave Configuration
 
-- **Step1**: Click on Manage jenkins from Jenkins homepage.
-- **Step2**: Under System Configuration click Nodes
-- **Step3**: Now in the node page click on New Node this will ask you to enter Nodename enter the name, select as permanent agent and Create.
-- **Step4**: This is configuration Page, we will need to provide some information regarding the node we launched in aws.
-              - **RemoteRootDirectory**: here in this block jenkins is asking us to confirm where the new jobs should be executed in SlaveNode, ALl the jobs which will be built, will be in the directory provided. For Eg: we can use **/opt/data/**
-              - **Labels**: Add the label name for this node, Remember this label will be required for any job to run on this Node.
-              - **UsageMethod**: Select Jobs matching labels 
-              - **LaunchMethod**: launch via ssh, Provide th ehostname details,(Ipaddress of the slave server)
-                                Since we have no credentails configured click on Add Credentails and in the dropdown, select ssh username with key, Provide the username as root and click on add file manually, here you need to paste teh private key. (Refer: In Step2 while generating ssh) Create Credentails.
-              Now again the teh launch method, select the credentails and select Non Verifying Verification Strategy.
+- **Step1**: Click on **Manage Jenkins** from the Jenkins homepage.
+- **Step2**: Under **System Configuration**, click **Nodes**.
+- **Step3**: On the Nodes page, click on **New Node**. This will prompt you to enter a node name. Enter the name, select **Permanent Agent**, and click **Create**.
+- **Step4**: On the configuration page, you will need to provide information about the node you launched in AWS:
+    - **RemoteRootDirectory**: Jenkins asks you to specify where the jobs should be executed on the Slave Node. All jobs built will reside in the provided directory. For example, you can use **/opt/data/**.
+    - **Labels**: Add a label name for this node. This label will be needed for any job that runs on this node.
+    - **Usage Method**: Select **Jobs matching labels**.
+    - **Launch Method**: Choose **Launch via SSH**. Provide the hostname details (IP address of the slave server).
+        - Since no credentials are configured, click on **Add Credentials**. In the dropdown, select **SSH Username with Private Key**. Provide the username as **root**.
+        - Click on **Add file manually**, then paste the private key (refer to Step 2 for generating the SSH key). Create the credentials.
+    - After setting the launch method, select the credentials and choose **Non-Verifying Verification Strategy**.
 
-Keep the rest of the configuration same and save it.
-
-Headover to Nodes in manage jenkins you should see the Node as connected.
+#### Additional Configuration:
+- **RemoteRootDirectory**: Specify where jobs are executed on the Slave Node.
+- **Labels**: Define the label for job execution on the node.
+- **UsageMethod**: Configure the node to run jobs matching the labels.
+- **LaunchMethod**: Choose SSH, provide the hostname, configure credentials, and apply a non-verifying strategy.
 
 
               
