@@ -158,6 +158,55 @@ Port mapping allows you to forward a port from your host machine (or EC2 instanc
 docker run -p [host_port]:[container_port] [image_name]
 ```
 
+## Great! 🎉 Now I Am Able to See My Container from the Browser
+
+## Stopping the Container 🛑
+
+I'm done with my work, so let me stop the container. Do I have some commands for that?
+
+### How Do I Stop the Container?
+
+Let's try the `docker stop` command.
+
+But how do I get the running container list? Oh, I have `docker ps`.
+
+```bash
+docker ps
+```
+
+This command lists all the running containers.
+
+Now, let's stop the container:
+
+```bash
+docker stop <container_id>
+```
+
+Replace `<container_id>` with the actual ID of your container from the `docker ps` output.
+
+Cool! 😎 Everything is down.
+
+### Checking All Containers 🔍
+
+Wait, can you check `docker ps -a`?
+
+```bash
+docker ps -a
+```
+
+Oh... I see my container is still there. But I stopped it. How do I remove it?
+
+### Removing the Container 🗑️
+We can use the docker rm command to remove the container:
+
+```bash
+docker rm <container_id>
+Again, replace <container_id> with the actual ID of your container.
+```
+
+### **What Is the Difference Between stop vs rm? 🤔**
+- **docker stop**: Stops a running container. The container still exists on your system but is not running.
+- **docker rm**: Removes a container from your system entirely. This deletes the container whether it's running or stopped.
 
 
 ## Docker Workflow
