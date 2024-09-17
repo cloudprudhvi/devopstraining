@@ -160,6 +160,28 @@ docker run -p [host_port]:[container_port] [image_name]
 
 ## Great! 🎉 Now I Am Able to See My Container from the Browser
 
+## Logging into a Docker Container 🔑
+
+Now, I want to log into my container. How do I do it? Is there any command?
+
+### Using `docker exec` to Access a Running Container
+
+Yes! You can use the `docker exec` command to run commands inside a running container. To get a shell inside your container, you can use:
+
+```bash
+docker exec -it <container_id> /bin/bash
+```
+
+### What Are `-i` and `-t` Options?
+
+- **`-i`**: Keeps STDIN open even if not attached.
+  - **Interactive Mode**: Allows you to interact with the container's shell.
+- **`-t`**: Allocates a terminal.
+  - **TTY**: Provides a terminal interface within the container.
+
+When combined as `-it`, these options allow you to have an interactive shell session inside the container.
+
+
 ## Stopping the Container 🛑
 
 I'm done with my work, so let me stop the container. Do I have some commands for that?
