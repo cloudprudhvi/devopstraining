@@ -181,6 +181,9 @@ docker exec -it <container_id> /bin/bash
 
 When combined as `-it`, these options allow you to have an interactive shell session inside the container.
 
+## Let me create a sample file as I have logged in
+
+`touch sample.txt`
 
 ## Stopping the Container 🛑
 
@@ -299,6 +302,62 @@ You may encounter an error when trying to remove an image that's being used by a
 **Reason**: Docker prevents you from deleting images that are in use to avoid breaking running containers.
 
 **Solution**: Stop and remove the running containers first.
+
+## what Happened to the sample.txt file which I have created?🤔
+
+As the Container is Terminated, the file which was created is also lost.
+
+## Is there a way to store my files even if Container goes down?
+## Understanding Docker Volumes 📦
+
+When working with Docker containers, you might need to persist data or share data between the host and the containers. This is where **Docker volumes** come into play.
+
+### What Are Docker Volumes? 🧐
+
+Docker volumes are a way to store data used by containers outside of the container's filesystem. Volumes are stored on the host filesystem and are managed by Docker.
+
+- **Persistent Storage**: Volumes allow data to persist even after the container is stopped or removed.
+- **Data Sharing**: Volumes can be shared between multiple containers.
+- **Decoupled Data**: They decouple the data from the container's lifecycle.
+
+### Types of Docker Volumes
+
+There are mainly two ways to manage data in Docker:
+
+1. **Volumes**: Managed by Docker, stored in Docker's directory on the host.
+2. **Bind Mounts**: Use any directory on the host system.
+
+### Using Volumes 📖
+
+#### Creating and Using a Volume
+
+You can create a volume using the `docker volume create` command:
+
+```bash
+docker volume create my-volume
+```
+To use the volume with a container:
+```
+docker run -d -v my-volume:/opt/data nginx
+```
+- `-v my-volume:/opt/data`: Mounts the volume my-volume to the container's /opt/data directory.
+
+### Using Bind Mounts 🔗
+
+Bind mounts allow you to mount a file or directory from the host machine into a container.
+
+#### Example:
+
+```bash
+docker run -d -v /host/path:/container/path nginx
+```
+- **`/host/path`**: The path on the host machine.
+- **`/container/path`**: The path inside the container.
+
+### When to Use Bind Mounts?
+
+- When you need to access host files inside the container.
+- Useful for development environments where you want the container to reflect code changes immediately.
 
 ## Docker Workflow
 
