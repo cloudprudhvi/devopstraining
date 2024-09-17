@@ -277,8 +277,6 @@ This command removes all dangling images to free up space.
 ## What Is docker system prune?
 For a more thorough cleanup, you can use:
 
-
-
 ```bash
 
 docker system prune
@@ -298,9 +296,9 @@ docker system prune -a
 ## Why Can't I Delete an Image Used by a Running Container?
 You may encounter an error when trying to remove an image that's being used by a running container.
 
-Reason: Docker prevents you from deleting images that are in use to avoid breaking running containers.
+**Reason**: Docker prevents you from deleting images that are in use to avoid breaking running containers.
 
-Solution: Stop and remove the running containers first.
+**Solution**: Stop and remove the running containers first.
 
 ## Docker Workflow
 
