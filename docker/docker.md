@@ -228,8 +228,79 @@ Again, replace <container_id> with the actual ID of your container.
 
 ### **What Is the Difference Between stop vs rm? 🤔**
 - **docker stop**: Stops a running container. The container still exists on your system but is not running.
-- **docker rm**: Removes a container from your system entirely. This deletes the container whether it's running or stopped.
+- **docker rm**: Removes a container from your system entirely. This deletes the container whether it's running or stopped. Use `-f` option to remove forcefully.
 
+## Disk Space Running Low? 🛑💾
+
+Seems like my disk is running out of space. What could be the issue?
+
+### Is Docker Using Up Disk Space?
+
+I've been working with Docker these days. Is it taking up my disk space? Let's check.
+
+### Checking Docker Images 🐳🖼️
+
+To see all the Docker images stored on your system, use:
+
+```bash
+docker images
+```
+This command lists all the Docker images you've downloaded or built.
+
+## Removing Unused Docker Images 🗑️
+
+If you need to remove images to free up space, you can use:
+
+```bash
+docker rmi <image_id>
+```
+Replace `<image_id>` with the actual ID of the image you want to remove.
+
+## What Are Dangling Images? 🤔
+
+Dangling images are layers that have no relationship to any tagged images. They are intermediate images that are no longer used and can consume disk space.
+
+You can view dangling images with:
+
+```bash
+docker images -f "dangling=true"
+```
+## Cleaning Up with docker image prune 🧹
+To remove all dangling images:
+
+```bash
+docker image prune
+```
+
+This command removes all dangling images to free up space.
+
+## What Is docker system prune?
+For a more thorough cleanup, you can use:
+
+
+
+```bash
+
+docker system prune
+```
+
+This command will remove:
+
+All stopped containers
+All dangling images
+All unused networks
+Add the -a flag to remove all unused images (not just dangling ones):
+
+```
+docker system prune -a
+```
+
+## Why Can't I Delete an Image Used by a Running Container?
+You may encounter an error when trying to remove an image that's being used by a running container.
+
+Reason: Docker prevents you from deleting images that are in use to avoid breaking running containers.
+
+Solution: Stop and remove the running containers first.
 
 ## Docker Workflow
 
