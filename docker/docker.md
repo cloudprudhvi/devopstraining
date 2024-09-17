@@ -32,6 +32,17 @@ A hypervisor, also known as a virtual machine monitor or VMM, is software that c
 ![Architecture](../images/docker/Architecture-of-Docker.png)
 
 
+## Docker Installation on Amazon Linux 2
+
+  - ```bash
+     sudo su
+     yum update -y
+     yum install docker -y
+     systemctl enable docker
+     systemctl status docker
+     ```
+
+
 ## Docker Workflow
 
 ![Workflow](../images/docker/dockerflow.webp)
