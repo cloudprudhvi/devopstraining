@@ -42,6 +42,37 @@ A hypervisor, also known as a virtual machine monitor or VMM, is software that c
      systemctl status docker
      ```
 
+Now you have all the docker components installed on your machine. you are ready to go!!
+
+## Let's run a Nginx Container
+We'll learn how to run an Nginx container using Docker. We'll cover what a Docker image is, where it's picked from, and what Docker does to run the container.
+
+## Let's Run an Nginx Container
+
+So, you might be thinking, "Let's run an Nginx container." But how do we actually do that?
+
+## How Do I Run It?
+
+To run an Nginx container, we use the `docker run` command. Open your terminal and type:
+
+```bash
+docker run nginx
+```
+
+## **What Happened in the background?**
+
+Docker Pulled something called as Image.
+
+### What Is a Docker Image?
+
+A Docker image is a lightweight, stand-alone package that includes everything needed to run a piece of software:
+
+- **Code**: The application code you want to run.
+- **Runtime**: The necessary runtime or interpreter (e.g., Node.js, Python).
+- **Libraries**: All required system libraries and dependencies.
+- **Environment Variables**: Configuration settings.
+- **Files**: Any additional files or assets.
+
 
 ## Docker Workflow
 
