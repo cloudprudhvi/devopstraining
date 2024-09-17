@@ -8,6 +8,9 @@ Imagine you've developed an application that works flawlessly on your machine. W
 
 ![Vm vs Container](../images/docker/vmvscontainer.png)
 
+# what is Hypervisor
+A hypervisor, also known as a virtual machine monitor or VMM, is software that creates and runs virtual machines (VMs). A hypervisor allows one host computer to support multiple guest VMs by virtually sharing its resources, such as memory and processing.
+
 
 | Aspect              | Virtual Machines (VMs)                                   | Containers                                       |
 |---------------------|----------------------------------------------------------|--------------------------------------------------|
