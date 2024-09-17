@@ -359,6 +359,18 @@ docker run -d -v /host/path:/container/path nginx
 - When you need to access host files inside the container.
 - Useful for development environments where you want the container to reflect code changes immediately.
 
+### Managing Volumes 🛠️
+## Removing Unused Volumes
+To remove a volume:
+```
+docker volume rm my-volume
+```
+
+To remove all unused volumes:
+```
+docker volume prune
+```
+
 ## Docker Workflow
 
 ![Workflow](../images/docker/dockerflow.webp)
