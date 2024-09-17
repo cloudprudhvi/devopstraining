@@ -129,7 +129,36 @@ The `docker ps` command is used to list all the running Docker containers on you
 
   ```bash
   docker ps
+  ```
+### Hmm.. COntainer is running absloutely fine, what could be the Issue? Am I missing Something? 🤔
+
+YES, 
+
+## Understanding Port Mapping in Docker 🛳️🔌
+
+When running Docker containers, you might want to make the services inside the container accessible to the outside world or your host machine. This is where **port mapping** comes into play.
+
+### What Is Port Mapping? 🌐➡️🌐
+
+Port mapping allows you to forward a port from your host machine (or EC2 instance) to a port inside the Docker container. This way, you can access services running inside the container via the host's IP address and specified port.
+
+### How Does Port Mapping Work?
+
+- **Containers Have Their Own Network Stack:**
+  - Each Docker container runs in its own isolated environment with its own network stack.
+  - By default, services inside the container are not accessible from the host machine.
+
+- **Exposing Ports:**
+  - To make a service accessible, you need to expose the container's port to the host.
+  - This is done using the `-p` or `--publish` flag with `docker run`.
+
+### Syntax of Port Mapping
+
+```bash
+docker run -p [host_port]:[container_port] [image_name]
 ```
+
+
 
 ## Docker Workflow
 
