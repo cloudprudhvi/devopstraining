@@ -168,6 +168,12 @@ Port mapping allows you to forward a port from your host machine (or EC2 instanc
 docker run -p [host_port]:[container_port] [image_name]
 ```
 
+### Random assignment of Host Ports to container
+
+```
+docker run -P [host_port]:[container_port] [image_name]
+```
+
 ## Great! 🎉 Now I Am Able to See My Container from the Browser
 
 ## Logging into a Docker Container 🔑
