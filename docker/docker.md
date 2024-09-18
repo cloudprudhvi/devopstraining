@@ -171,7 +171,7 @@ docker run -p [host_port]:[container_port] [image_name]
 ### Random assignment of Host Ports to container
 
 ```
-docker run -P [host_port]:[container_port] [image_name]
+docker run -P [image_name]
 ```
 
 ## Great! 🎉 Now I Am Able to See My Container from the Browser
