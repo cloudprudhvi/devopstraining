@@ -3,6 +3,13 @@
 ### Why Docker
 Imagine you've developed an application that works flawlessly on your machine. When you share it with a colleague, they run into issues because their environment is different—different libraries, dependencies, or configurations. What if you could package your entire application, along with all its dependencies and settings, into a single unit that your colleague can run on their system without any compatibility problems? That's essentially what Docker allows you to do.
 
+## What Is Docker? 🐳
+
+- **Docker** is a tool that allows developers to package applications into **containers**—standardized units that include everything the software needs to run.
+- **Containers** are lightweight, portable environments that run the same way across different systems because they contain all necessary code, libraries, and dependencies.
+- **Why Use Docker?** It ensures consistency between development, testing, and production, eliminating the "works on my machine" problem.
+- **Benefits:** Docker simplifies application deployment, scaling, and management by isolating applications from the underlying infrastructure.
+- **For Software Engineer Interns:** Docker makes it easier to set up development environments, so you can focus on writing code without worrying about system configurations.
 
 ## Virtual Machine Vs Containers
 
