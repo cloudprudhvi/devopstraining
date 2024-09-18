@@ -18,6 +18,53 @@
   ```bash
   docker pause my_container
   ```
+
+**Notes:** Useful when you need to temporarily halt a container's activity without stopping it completely.
+
+---
+
+## `docker unpause`
+
+**Description:** Unfreezes all processes in a paused container.
+
+**Effect:** The container's processes resume execution from where they were paused.
+
+**Example Usage:**
+
+```bash
+docker unpause my_container
+```
+**Notes:** Use this command to resume a container that was previously paused.
+
+---
+
+### `docker stop`
+
+**Description:** Gracefully stops a running container by sending the `SIGTERM` signal, allowing processes to exit cleanly. If the container doesn't stop within the default timeout (10 seconds), it sends `SIGKILL`.
+
+**Effect:** Processes are allowed to shut down gracefully; the container transitions to the "stopped" state.
+
+**Example Usage:**
+
+```bash
+docker stop my_container
+```
+
+**Notes:** Ideal for stopping containers when you want to ensure data integrity and allow cleanup operations.
+
+### `docker kill`
+
+**Description:** Forcefully stops a running container by sending the `SIGKILL` signal immediately.
+
+**Effect:** All processes are terminated abruptly; the container transitions to the "stopped" state.
+
+**Example Usage:**
+
+```bash
+docker kill my_container
+```
+**Notes**: Useful when a container is unresponsive or needs to be stopped without delay.
+
 # Understanding Signals: `SIGSTOP`, `SIGCONT`, `SIGTERM`, and `SIGKILL` 🚦
 
 In Unix-like operating systems, **signals** are a form of inter-process communication used to notify processes of events. Four important signals are `SIGSTOP`, `SIGCONT`, `SIGTERM`, and `SIGKILL`. Here's what they are and how they function:
