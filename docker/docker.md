@@ -371,6 +371,102 @@ To remove all unused volumes:
 docker volume prune
 ```
 
+## Viewing Container Information 🧐
+
+I want to know more about the container info. What options do I have?
+
+### Using `docker inspect` to Get Detailed Container Information
+
+We have the `docker inspect` option, which gives you detailed information about your container.
+
+#### What Is `docker inspect`?
+
+- **`docker inspect`**: This command returns low-level information on Docker objects, such as containers, images, volumes, networks, and more, in JSON format.
+
+#### Syntax:
+
+```bash
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+
+Eg: docker inspect <container-id>
+```
+
+## Viewing Container Logs 📝
+
+Similarly, if I want to check the logs of my container to see what's happening inside, what options do I have?
+
+### Using `docker logs` to View Container Output
+
+We have the `docker logs` command, which allows you to fetch the logs of a running or stopped container.
+
+#### What Is `docker logs`?
+
+- **`docker logs`**: This command retrieves the logs (stdout and stderr) from a container.
+
+#### Syntax:
+
+```bash
+docker logs [OPTIONS] <container_id_or_name>
+```
+
+## Advanced Usage of `docker logs` 🛠️
+
+I need more focus on the options in `docker logs`:
+
+- `-f` or `--follow`
+- `--tail`
+- `--since`
+- `--until`
+
+Let's explore these options in detail.
+
+### Following Logs in Real-Time with `-f` or `--follow` 👀
+
+The `-f` or `--follow` option allows you to stream the logs of a container in real-time, similar to how `tail -f` works on Linux systems.
+
+#### Syntax:
+
+```bash
+docker logs -f <container_id_or_name>
+```
+### Example with tailing logs
+
+```bash
+docker logs --tail <number_of_lines> <container_id_or_name>
+Eg: docker logs --tail 10 <container-id>
+```
+
+### Filtering Logs by Time with `--since` and `--until` ⏰
+
+The `--since` and `--until` options allow you to display logs within a specific time range.
+
+#### `--since` Option
+
+Shows logs generated after a given date/time.
+
+**Syntax:**
+
+```bash
+docker logs --since <timestamp> <container_id_or_name>
+docker logs --since 1h <container-id>
+```
+
+Shows logs from the last 2 hours.
+
+### `--until` Option
+
+Shows logs generated before a given date/time.
+
+**Syntax:**
+
+```bash
+docker logs --until <timestamp> <container_id_or_name>
+docker logs --until "2024-09-18T18:00:00" inspiring_hamilton
+```
+
+
+
+
 ## Docker Workflow
 
 ![Workflow](../images/docker/dockerflow.webp)
