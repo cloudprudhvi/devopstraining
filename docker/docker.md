@@ -185,6 +185,10 @@ When combined as `-it`, these options allow you to have an interactive shell ses
 
 `touch sample.txt`
 
+## Now If you want to exit, how do you exit from a Running Container.
+
+**`CTRL + P + Q`**
+
 ## Stopping the Container 🛑
 
 I'm done with my work, so let me stop the container. Do I have some commands for that?
@@ -220,6 +224,8 @@ docker ps -a
 ```
 
 Oh... I see my container is still there. But I stopped it. How do I remove it?
+
+Before that let me login
 
 ### Removing the Container 🗑️
 We can use the docker rm command to remove the container:
