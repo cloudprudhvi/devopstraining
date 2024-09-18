@@ -9,7 +9,7 @@ Imagine you've developed an application that works flawlessly on your machine. W
 - **Containers** are lightweight, portable environments that run the same way across different systems because they contain all necessary code, libraries, and dependencies.
 - **Why Use Docker?** It ensures consistency between development, testing, and production, eliminating the "works on my machine" problem.
 - **Benefits:** Docker simplifies application deployment, scaling, and management by isolating applications from the underlying infrastructure.
-- **For Software Engineer Interns:** Docker makes it easier to set up development environments, so you can focus on writing code without worrying about system configurations.
+- **For Software Engineer:** Docker makes it easier to set up development environments, so you can focus on writing code without worrying about system configurations.
 
 ## Virtual Machine Vs Containers
 
