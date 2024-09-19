@@ -137,12 +137,32 @@ Once the image is built, you can run a container from it:
 ```
 docker run -d -p 80:80 --name my-app-container my-app-image
 ```
-## we are now able to create the Image, Lets create one more Image.
-
-[GitHub Repository](https://github.com/dockersamples/blog-react-app/tree/main)
-
 
 - `-d`: Runs the container in detached mode (in the background).
 - `-p 80:80`: Maps port **80** in the container to port **80** on your host machine.
 - `--name my-app-container`: Names the container `my-app-container`.
 - `my-app-image`: The name of the image to create the container from.
+
+## we are now able to create the Image, Lets create one more Image.
+
+[REACT_APP](https://github.com/dockersamples/blog-react-app/tree/main)
+
+## Lets clone the repo and try to Build the Docker image
+
+```
+git clone https://github.com/dockersamples/blog-react-app.git
+```
+
+### Build docker Image
+
+**`docker build -t reactapp .`**
+
+Observe the `Dockerfile`
+
+Now lets list the image, if you Observe the Image size is almost `1.4GB` which is really huge in docker environment. 
+
+Lets take a close look at the Dockerfile. 
+
+We are running nodejs as the backend server here. Since it requires downloading the node_modules the size here is very huge.
+
+Can we Optimize the size?
