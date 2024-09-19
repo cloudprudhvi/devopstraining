@@ -113,7 +113,7 @@ WORKDIR /app
 COPY . /app
 
 # Expose the port your application runs on (optional)
-EXPOSE 8080
+EXPOSE 80
 
 # Start the application
 CMD ["python3", "app.py"]
@@ -139,6 +139,6 @@ docker run -d -p 80:80 --name my-app-container my-app-image
 ```
 
 - `-d`: Runs the container in detached mode (in the background).
-- `-p 80:80`: Maps port **8000** in the container to port **8000** on your host machine.
+- `-p 80:80`: Maps port **80** in the container to port **80** on your host machine.
 - `--name my-app-container`: Names the container `my-app-container`.
 - `my-app-image`: The name of the image to create the container from.
