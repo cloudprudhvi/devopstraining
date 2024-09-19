@@ -16,9 +16,9 @@ class MyHandler(SimpleHTTPRequestHandler):
 
 # Define the server to run on port 8080
 def run(server_class=HTTPServer, handler_class=MyHandler):
-    server_address = ('', 8080)  # Listen on all available interfaces, port 8080
+    server_address = ('', 80)  # Listen on all available interfaces, port 8080
     httpd = server_class(server_address, handler_class)
-    print(f"Server started on port 8080 in container {container_id}")
+    print(f"Server started on port 80 in container {container_id}")
     httpd.serve_forever()
 
 # Run the web server
