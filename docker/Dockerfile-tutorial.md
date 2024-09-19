@@ -100,21 +100,20 @@ Putting it all together, your Dockerfile might look like this:
 # Use Debian as the base image
 FROM debian:latest
 
+# Set environment variables to ensure no prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install Python
-RUN apt-get update && apt-get install -y python3 python3-pip
+RUN apt-get update && apt-get install -y python3
 
 # Set the working directory
 WORKDIR /app
-
-# Copy requirements and install dependencies
-COPY requirements.txt /app/requirements.txt
-RUN pip3 install -r requirements.txt
 
 # Copy application code
 COPY . /app
 
 # Expose the port your application runs on (optional)
-EXPOSE 80
+EXPOSE 8080
 
 # Start the application
 CMD ["python3", "app.py"]
