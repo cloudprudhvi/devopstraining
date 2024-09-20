@@ -307,3 +307,74 @@ This ensures that Nginx always runs, and any arguments passed during `docker run
 ENTRYPOINT ["nginx"]
 CMD ["-g", "daemon off;"]
 ```
+
+# 🌍 ENV vs ARG in Dockerfile 🐳
+
+Both `ENV` and `ARG` are used to define variables in Dockerfiles, but they serve different purposes and behave differently during the build and runtime stages. Let’s dive into their differences! 🔍
+
+---
+
+## 🔹 **ARG**: Build-Time Variables
+
+### 📝 **Syntax**:
+```dockerfile
+ARG <variable_name>=<default_value>
+```
+
+### Purpose: 🛠️
+Defines a build-time variable that you can pass values to during the Docker build process.
+
+### Scope: 🚧
+`ARG` values are only available during the build process and cannot be accessed at runtime inside the running container.
+
+### Default Value:
+You can set a default value for `ARG`, which will be used unless overridden with `--build-arg` during the `docker build` command.
+
+### ⚠️ When to Use:
+Use `ARG` when you need to pass in build-specific configurations, like proxy settings or build modes (e.g., development, production).
+
+### ⚡ Example:
+```dockerfile
+# Define an ARG with a default value
+ARG APP_VERSION=1.0.0
+
+# Use the ARG in the build process
+RUN echo "App is running version $APP_VERSION"
+```
+### 2. 🌍 `ENV` (Environment Variable)
+
+**Purpose**:  
+Defines a runtime variable that will be available both during the build and inside the running container.
+
+**Scope**:  
+📦 **Available at runtime**: `ENV` variables are persisted in the final Docker image and are available inside the container.
+
+**Example**:  
+Let’s set a runtime environment variable for the application version.
+```Dockerfile
+# Build-time argument for app version
+ARG APP_VERSION=1.0.0
+
+# Set an environment variable based on the build-time ARG
+ENV APP_VERSION=$APP_VERSION
+
+# Use the ENV variable during build and runtime
+RUN echo "Building version $APP_VERSION"
+
+# During runtime, the app can access this ENV variable
+CMD ["echo", "App is running version $APP_VERSION"]
+
+```
+
+---
+
+### 🌟 Key Differences Between `ARG` and `ENV` (Version Example)
+
+| **Feature**                      | **`ARG`**                          | **`ENV`**                              |
+|-----------------------------------|------------------------------------|----------------------------------------|
+| **Scope**                         | 🚧 Build-time only                 | 🌍 Available at build-time and runtime |
+| **Available in Running Container?**| ❌ No                              | ✅ Yes                                 |
+| **Use Case**                      | 🛠️ Setting version during build     | ⚙️ Setting version during runtime      |
+| **Default Value**                 | ✅ Can be set in the Dockerfile     | ✅ Can be set in the Dockerfile         |
+| **Overridden at Build-Time**      | ✅ Yes, using `--build-arg`         | ❌ No                                  |
+| **Overridden at Runtime**         | ❌ No                              | ✅ Yes, using `-e` during `docker run` |
