@@ -145,7 +145,7 @@ docker run -d -p 80:80 --name my-app-container my-app-image
 
 ## we are now able to create the Image, Lets create one more Image.
 
-[REACT_APP](https://github.com/dockersamples/blog-react-app/tree/main)
+## [REACT_APP](https://github.com/dockersamples/blog-react-app/tree/main)
 
 ## Lets clone the repo and try to Build the Docker image
 
@@ -166,3 +166,68 @@ Lets take a close look at the Dockerfile.
 We are running nodejs as the backend server here. Since it requires downloading the node_modules the size here is very huge.
 
 Can we Optimize the size?
+
+Yes We can run the application with only necessary packages, and remove unnecessary packages, by this we will be able to minimize the Docker Image Size.
+To get this done we have Multi layer Docker Image. Here we Initially take a base Image and build the application, once the application is built we then take another base image in same Dockerfile and copy the Build Output to the new Base Image and run it. By following this when the container runs, only the latest base Image will be running.
+
+## Learning Instructions in Dockerfile
+
+We have seen `COPY` Instruction which helps in copying the files while building the docker Image.
+
+### 🔹 `COPY`
+
+#### 📝 Purpose: 
+🚛 `COPY` is the simpler and more straightforward command. It copies files or directories from your local file system into the Docker image.
+
+#### What it can do:
+- Copies files from the build context (`.`) to a specified location in the container.
+- Only handles **local files** or **directories**.
+
+#### ✅ When to Use:
+- When you need to **copy files exactly** as they are into the container.
+- Best for most use cases where you are simply copying files or directories from your machine to the image.
+
+```
+COPY <source-path> <destination-path>
+COPY . .     # copies all current dirctory file to the WORKDIR
+COPY . /opt  # copies all current directory files to /opt folder
+```
+🔹 **ADD**
+
+📝 **Syntax**:
+
+**Purpose**: ✨ `ADD` does everything `COPY` does, but with a few extra capabilities.
+
+**What it can do**:
+- Copy local files or directories (just like `COPY`).
+- Extract local `.tar` archives directly into the destination directory.
+- Fetch files from remote URLs and add them to the container.
+
+⚠️ **When to Use**:
+- When you need to:
+  - Extract tar files (e.g., `.tar`, `.tar.gz`, `.tgz`).
+  - Download files from a remote URL into the image.
+
+⚡ **Example 1: Copy and Extract a `.tar` File**
+```
+ADD https://example.com/file.tar.gz /usr/src/app/
+ADD my-archive.tar.gz /usr/src/app/
+```
+
+## 🌟 Key Differences
+
+| Feature                          | `COPY`                                | `ADD`                                 |
+|-----------------------------------|---------------------------------------|---------------------------------------|
+| 📁 **Basic File/Directory Copy**  | ✅ Yes                                | ✅ Yes                                |
+| 📦 **Extract TAR Files**          | ❌ No                                 | ✅ Yes                                |
+| 🌍 **Fetch from Remote URL**       | ❌ No                                 | ✅ Yes                                |
+| 🛡️ **Best for Clarity**            | ✅ Simpler, more predictable           | ⚠️ Overloaded with extra features     |
+
+**`[DOCKER COPY VS ADD BLOG (https://www.docker.com/blog/docker-best-practices-understanding-the-differences-between-add-and-copy-instructions-in-dockerfiles/#:~:text=Security%3A%20Because%20COPY%20only%20handles,image%20without%20any%20additional%20processing.)]`**
+
+## 🔑 Best Practices
+
+- **Use `COPY`** whenever possible for simplicity, transparency, and better maintainability. It’s more predictable and avoids unexpected behavior.
+- **Use `ADD`** only when you need its extra functionality, like extracting a `.tar` file or downloading files from a remote URL.
+
+
