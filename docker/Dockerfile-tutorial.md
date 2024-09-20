@@ -223,7 +223,7 @@ ADD my-archive.tar.gz /usr/src/app/
 | 🌍 **Fetch from Remote URL**       | ❌ No                                 | ✅ Yes                                |
 | 🛡️ **Best for Clarity**            | ✅ Simpler, more predictable           | ⚠️ Overloaded with extra features     |
 
-**`[DOCKER COPY VS ADD BLOG (https://www.docker.com/blog/docker-best-practices-understanding-the-differences-between-add-and-copy-instructions-in-dockerfiles/#:~:text=Security%3A%20Because%20COPY%20only%20handles,image%20without%20any%20additional%20processing.)]`**
+**[DOCKER COPY VS ADD BLOG](https://www.docker.com/blog/docker-best-practices-understanding-the-differences-between-add-and-copy-instructions-in-dockerfiles/#:~:text=Security%3A%20Because%20COPY%20only%20handles,image%20without%20any%20additional%20processing.)]**
 
 ## 🔑 Best Practices
 
