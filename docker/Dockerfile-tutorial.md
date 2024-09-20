@@ -230,4 +230,80 @@ ADD my-archive.tar.gz /usr/src/app/
 - **Use `COPY`** whenever possible for simplicity, transparency, and better maintainability. It’s more predictable and avoids unexpected behavior.
 - **Use `ADD`** only when you need its extra functionality, like extracting a `.tar` file or downloading files from a remote URL.
 
+# 🚀 CMD vs ENTRYPOINT in Docker 🐳
 
+Both `CMD` and `ENTRYPOINT` are instructions used to specify the **default command** that runs when a container starts. However, they differ in how they handle arguments passed at runtime. Let's explore their differences! 🔍
+
+---
+
+## 🔹 **CMD**
+
+### 📝 **Syntax**:
+```dockerfile
+CMD ["executable", "param1", "param2"]
+```
+
+### 📝 Purpose:
+Specifies the default command to run in the container if no other command is provided at runtime.
+
+### 🚦 Flexibility:
+`CMD` is overridden if you pass a command during `docker run`. The arguments given at runtime replace the `CMD`.
+
+### ⚠️ When to Use:
+Use `CMD` when you want to provide default behavior but allow it to be easily overridden.
+
+### ⚡ Example:
+This will start Nginx, but you can override this command when you run the container with `docker run`.
+```Dockerfile
+CMD ["nginx", "-g", "daemon off;"]
+```
+---
+
+## 🔹 ENTRYPOINT
+
+### 📝 Syntax:
+```Dockerfile
+ENTRYPOINT ["<executable>", "<param1>", "<param2>"]`
+```
+### 🛠️ Purpose:
+Specifies a command that always runs when the container starts.
+
+### 🚧 Flexibility:
+Arguments passed at runtime are appended to the `ENTRYPOINT` rather than replacing it. This makes `ENTRYPOINT` more rigid compared to `CMD`.
+
+### ⚠️ When to Use:
+Use `ENTRYPOINT` when you want the container to always run a specific command and have it act more like an executable.
+
+### ⚡ Example:
+```Dockerfile
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+```
+This ensures that Nginx always runs, and any arguments passed during `docker run` are appended to this command.
+
+---
+
+## 🌟 Key Differences:
+
+| **Feature**               | **CMD**                                       | **ENTRYPOINT**                              |
+|---------------------------|-----------------------------------------------|---------------------------------------------|
+| 📋 **Purpose**             | Provides a default command that can be overridden | Defines the main command that always runs    |
+| 🛠️ **Overriding Behavior** | Can be easily overridden with `docker run`    | Cannot be overridden, but arguments are appended |
+| 🔄 **Flexibility**         | More flexible, can be replaced               | More rigid, always runs the specified command |
+
+---
+
+## 🔑 Best Practices:
+
+- **Use `CMD`** when you want to specify default behavior but still allow users to override the command at runtime.
+- **Use `ENTRYPOINT`** when you need to enforce a specific command to run in the container and append runtime arguments.
+
+💡 **Pro Tip**: You can combine `ENTRYPOINT` and `CMD` to create a more flexible structure where `ENTRYPOINT` specifies the main command and `CMD` provides default arguments that can be overridden.
+
+---
+
+## 🔀 Example of Combining `ENTRYPOINT` and `CMD`:
+
+```dockerfile
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
+```
