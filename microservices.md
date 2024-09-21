@@ -48,7 +48,7 @@ Different services can use different programming languages or databases, based o
 
 If one service fails (e.g., Payment Service), the rest of the application can continue to function. Users might still browse products or add them to the cart while the payment issue is resolved.
 
-#### Conclusion
+### Conclusion
 Services communicate with each other but can work, update, and scale independently.
 This architecture makes the system easier to develop, scale, and maintain.
 
