@@ -140,4 +140,51 @@ A sample output might look like this:
 }
 ```
 
+This command helps you inspect and verify the details of the network, including which containers are connected and their corresponding IP addresses.
+
+
+Here's the enhanced explanation about the host network with examples, following the same style:
+
+### Deep Dive: Host Network
+The host network allows a Docker container to share the network stack with the Docker host (i.e., the machine running Docker). This effectively removes the network isolation between the container and the host, meaning the container uses the host’s IP address and network interface directly.
+
+#### How to use the host network
+To run a container using the host network, you can specify the --network=host flag in your docker run command:
+
+```bash
+docker run --network=host nginx
+```
+
+In this example, the nginx container will use the host’s network, meaning:
+It will not have its own IP address.
+
+Any ports exposed by the container will be available directly on the host’s IP address, without needing to perform any port mapping.
+
+For instance, if you have an Nginx server running in the container on port 80, it will be accessible directly through the host’s IP address at port 80, without needing to map the port like in bridge networks (-p 8080:80).
+
+ #### Key Characteristics of Host Network
+`No Network Isolation:` The container shares the network stack of the host. Any port exposed by the container will bind directly to a port on the host.
+
+`Performance Consideration:` Using the host network can sometimes provide better network performance since there is no network translation (NAT) overhead between the container and host.
+
+`Use Cases:` The host network is useful in scenarios where low-latency access to the network or the actual host’s IP address is necessary, such as running certain monitoring services, or when you don’t want to map ports manually.
+
+**Example**📄 
+
+Let’s look at a practical example where we run an Nginx container with the host network:
+
+```bash
+docker run --network=host -d nginx
+```
+In this case:
+
+The Nginx web server inside the container will be accessible directly at http://<host_ip>:80.
+
+You won’t need to specify a -p (port mapping) option because the container is using the host’s network stack directly.
+
+#### Important Considerations
+`Port Conflicts:` Since the container is using the host's network, you need to ensure that no other services on the host are using the same ports. For example, if another service is already using port 80, starting an Nginx container using the host network will result in a port conflict.
+
+`Security:` Using the host network eliminates Docker’s built-in network isolation between the host and containers, which may not be desirable from a security standpoint.
+
 
