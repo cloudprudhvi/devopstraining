@@ -187,4 +187,40 @@ You won’t need to specify a -p (port mapping) option because the container is 
 
 `Security:` Using the host network eliminates Docker’s built-in network isolation between the host and containers, which may not be desirable from a security standpoint.
 
+### Deep Dive: None Network🚫
+The none network is exactly what it sounds like—it provides no networking for the container. When you run a container with the none network, it is completely isolated from any networks, including other containers, the host, and the external world.
+
+#### How to use the none network
+To run a container using the none network, you can use the --network=none flag in your docker run command:
+
+```bash
+docker run --network=none nginx
+```
+
+In this case, the container will not have any network interfaces, meaning:
+
+It cannot communicate with other containers or the outside world.
+It cannot access the internet or be accessed by any external service.
+This creates a completely isolated environment.
+
+#### Key Characteristics of None Network
+`No Network Connectivity:` The container doesn’t get assigned an IP address or a network interface. It can only communicate with itself, but not with any other network.
+
+`Use Cases:` The none network is useful for running containers where network access is either not required or not desired. For example, if you want to run a container to perform internal data processing without any need for communication with other systems.
+
+📄 `Example`
+Let’s run a simple Nginx container with the none network:
+
+```bash
+docker run --network=none nginx
+```
+
+In this case:
+The Nginx web server inside the container won’t be accessible because the container isn’t connected to any network.
+The container won’t be able to send or receive data from other containers, the host, or the internet.
+
+#### `Important Considerations`
+`Completely Isolated:` Since the container is completely disconnected from any network, you won’t be able to use any network services like HTTP or SSH within the container.
+
+Use When No Networking is Needed: This is ideal for scenarios where you don’t need external communication, like containers doing background processing or performing isolated tasks.
 
