@@ -101,3 +101,43 @@ This will return a large JSON output, but the part you’re looking for is under
 **Network Name:** The `"Networks"` section will list the network the container is connected to (in this case, `custom-bridge`).
 
 **IP Address:** You will also see the IP address of the container within that network (e.g., 173.17.0.2).
+
+### How do I inspect a Docker network?
+🔍 If you want to inspect a specific Docker network, you can use the docker network inspect command. This command gives you detailed information about the network's configuration, such as its subnet, connected containers, and other settings.
+
+To inspect a network, use the following command:
+
+```bash
+docker network inspect <network_name>
+```
+For example, if you created a network called custom-bridge, you would run:
+
+```bash
+docker network inspect custom-bridge
+```
+
+This will return information such as:
+
+**Subnet:** The IP address range used by the network.
+**Connected Containers:** A list of containers attached to this network.
+**Network Driver:** Whether the network is using the bridge, overlay, or another driver.
+
+A sample output might look like this:
+
+```json
+{
+    "Name": "my-custom-bridge",
+    "Id": "e3a3e8a9e0...",
+    "Driver": "bridge",
+    "Subnet": "173.17.0.0/16",
+    "Containers": {
+        "container_id": {
+            "Name": "nginx",
+            "IPv4Address": "173.17.0.2/16",
+            "MacAddress": "02:42:ac:11:00:02"
+        }
+    }
+}
+```
+
+
