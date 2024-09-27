@@ -1,0 +1,56 @@
+git clone https://github.com/dockersamples/example-voting-app/tree/main
+Networks: docker network create frontend , docker network create backend
+vote: docker run -d --network frontend --network backend -p 80:80 vote
+
+redis : docker run -d --network backend --name redis redis:alpine
+
+worker: docker run --network backend --name worker worker
+
+postgres:docker run -d --name db --network backend -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:15-alpine
+
+result: docker run -d --network frontend --network backend -p 81:80 result
+
+----
+docker-compose.yaml
+
+docker-compose up -d
+
+version: "3"
+services:
+  vote:
+   image: vote
+   ports:
+    - "80:80"
+   networks:
+    - backend
+    - frontend
+   depends_on:
+     redis
+  redis:
+   image: redis:alpine
+   networks:
+    - backend
+  worker:
+   image: worker
+   networks:
+    - backend
+   depends_on:
+     postgres
+  db:
+   image: postgres:15-alpine
+   networks:
+    - backend
+   environment:
+    POSTGRES_USER: "postgres"
+    POSTGRES_PASSWORD: "postgres"
+  result:
+   image: result
+   networks:
+    - backend
+    - frontend
+   ports:
+    - "81:80"
+   
+networks:
+  backend:
+  frontend:
