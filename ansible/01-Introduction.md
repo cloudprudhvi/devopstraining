@@ -64,3 +64,14 @@ Here’s why Ansible is often preferred over other tools:
 5. **Security**: Ansible Vault makes managing sensitive data simple.
 
 6. **Community Support**: Tons of pre-built roles and modules available, plus active community support.
+
+| **Feature**            | **Ansible**                                         | **Terraform**                                    |
+|------------------------|----------------------------------------------------|--------------------------------------------------|
+| **Primary Purpose**     | Configuration management & application deployment  | Infrastructure provisioning & orchestration      |
+| **Agent Requirement**   | Agentless (uses SSH/WinRM for remote management)    | Agentless (works via APIs for cloud providers)    |
+| **Language**            | YAML (declarative, easy to read and write)         | HCL (HashiCorp Configuration Language)            |
+| **State Management**    | No built-in state management (push-based, real-time) | Maintains state of infrastructure (state files)  |
+| **Primary Focus**       | Configuration management and automation of existing infrastructure | Infrastructure provisioning (as code), ideal for creating new infrastructure|
+| **Approach**            | Procedural: Defines how tasks should be done (step-by-step) | Declarative: Defines what the desired end state should be |
+| **Use Case Focus**      | Best for configuring, deploying, and managing existing servers | Best for provisioning cloud infrastructure (IaC) |
+
