@@ -236,7 +236,6 @@ If the file hasn't changed, the handler will not run.
       service:
         name: httpd
         state: restarted
-      when: ansible_os_family == "RedHat"
 ```
 #### 🚀 How It Works:
 📝 The copy task copies the index.html file, but only notifies the Restart httpd handler if the file changes.
