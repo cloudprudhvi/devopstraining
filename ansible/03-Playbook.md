@@ -241,3 +241,15 @@ If the file hasn't changed, the handler will not run.
 📝 The copy task copies the index.html file, but only notifies the Restart httpd handler if the file changes.
 
 🔄 The handler (Restart httpd or Restart apache2) will restart the service, but only if the index.html file has been modified.
+
+
+### 🔍 Validating Playbook
+
+When running an Ansible playbook, it is important to ensure that everything is properly validated and tested before execution. To achieve this, there are multiple checks and tools that can be used to verify the correctness of the playbook. Here are four key tools and options for validating Ansible playbooks: `--syntax-check`, `ansible-lint`, `--check`, and `--diff`.
+
+| Option/Tool | Description | Example Command | Purpose |
+|---|---|---|---|
+| --syntax-check | Verifies if the playbook's syntax is correct. It does not execute the playbook but only checks for syntax errors. | ansible-playbook playbook.yml --syntax-check | Useful for quickly identifying syntax issues without running the playbook. |
+| ansible-lint | A tool to check for best practices and common mistakes in Ansible playbooks, roles, and tasks. It enforces style guidelines and flags suboptimal usage. | ansible-lint playbook.yml | Ensures code quality by catching potential mistakes, enforcing standards, and following best practices. |
+| --check | Runs the playbook in "dry-run" mode. Ansible simulates what changes it would make on the target systems without actually making any changes. | ansible-playbook playbook.yml --check | Safe for testing to see what will be changed without making real changes (useful for validation and testing). |
+| --diff | Shows the differences between the current state of files and the changes that Ansible will make. This option is often combined with --check or regular execution. | ansible-playbook playbook.yml --check --diff<br> or<br>ansible-playbook playbook.yml --diff | Provides visibility into file changes before or after execution, showing line-by-line differences between the current and intended state. |
