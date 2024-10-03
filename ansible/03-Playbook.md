@@ -253,3 +253,13 @@ When running an Ansible playbook, it is important to ensure that everything is p
 | ansible-lint | A tool to check for best practices and common mistakes in Ansible playbooks, roles, and tasks. It enforces style guidelines and flags suboptimal usage. | ansible-lint playbook.yml | Ensures code quality by catching potential mistakes, enforcing standards, and following best practices. |
 | --check | Runs the playbook in "dry-run" mode. Ansible simulates what changes it would make on the target systems without actually making any changes. | ansible-playbook playbook.yml --check | Safe for testing to see what will be changed without making real changes (useful for validation and testing). |
 | --diff | Shows the differences between the current state of files and the changes that Ansible will make. This option is often combined with --check or regular execution. | ansible-playbook playbook.yml --check --diff<br> or<br>ansible-playbook playbook.yml --diff | Provides visibility into file changes before or after execution, showing line-by-line differences between the current and intended state. |
+
+#### 🔑 Key Takeaways:
+`--syntax-check ✔️:` Validates the playbook for syntax errors before execution.
+
+`ansible-lint` 🔍: Enforces best practices and identifies common mistakes in Ansible code.
+
+`--check` 🛑: Simulates the execution of the playbook (dry-run), showing what would happen without making real changes.
+
+`--diff` 🔄: Shows the differences between current and future file states, providing visibility into configuration changes.
+
