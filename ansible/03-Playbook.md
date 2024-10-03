@@ -263,3 +263,26 @@ When running an Ansible playbook, it is important to ensure that everything is p
 
 `--diff` 🔄: Shows the differences between current and future file states, providing visibility into configuration changes.
 
+#### 🛠️ Ansible setup Module
+The setup module in Ansible is used for gathering facts about remote systems. These facts provide information about the target machine’s operating system, network, hardware, and other configurations. Ansible automatically collects these facts before executing tasks, allowing you to make decisions based on the system’s environment.
+
+`Fact Gathering`: Collects information such as OS type, IP addresses, CPU details, memory, and more.
+
+📝 Example Usage:
+To gather and display facts from a remote host, use the following ad-hoc command:
+
+```bash
+ansible all -m setup
+```
+To gather only network-related facts:
+
+```bash
+ansible all -m setup -a "filter=ansible_default_ipv4"
+```
+⚙️ Disabling Fact Gathering:
+Fact gathering can be disabled in a playbook using:
+
+```yaml
+gather_facts: false
+```
+This speeds up execution when facts are not needed.
