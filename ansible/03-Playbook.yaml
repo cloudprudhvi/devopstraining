@@ -1,6 +1,6 @@
 #### But what is this command?
 
-We'll break down each part of this command, explain what it does, and explore the concept of modules in Ansible, including examples of other commonly used modules.
+We wll break down each part of this command, explain what it does, and explore the concept of modules in Ansible, including examples of other commonly used modules.
 
 #### 🛠️ Understanding the Ansible Command: ```ansible all -m ping```
 📌 Breaking Down the Command
@@ -8,7 +8,7 @@ ansible: This is the Ansible command-line tool used to run Ansible tasks on mana
 
 `all`: This specifies the inventory pattern that tells Ansible which hosts to target. In this case, all means all the hosts listed in your inventory file.
 
-`-m ping`: The -m option tells Ansible which module to use. Here, we're using the ping module.
+`-m ping`: The -m option tells Ansible which module to use. Here, we are using the ping module.
 
 #### 🧐 What Does This Command Do?
 When you run ansible all -m ping, Ansible attempts to:
@@ -17,11 +17,11 @@ Connect to all the hosts defined in your inventory file.
 Execute the ping module on each host.
 Report the success or failure of the connection.
 
-The ping module checks if Ansible can connect to the managed nodes, execute Python, and return a JSON response. It's a quick way to verify that your Ansible setup is correctly configured and that the master can communicate with the slaves.
+The ping module checks if Ansible can connect to the managed nodes, execute Python, and return a JSON response. It is a quick way to verify that your Ansible setup is correctly configured and that the master can communicate with the slaves.
 
 #### 🗂️ What is the Ansible Inventory File?
 
-It's where Ansible keeps track of all the machines (servers, virtual machines, cloud instances, etc.) that it can manage.
+It is where Ansible keeps track of all the machines (servers, virtual machines, cloud instances, etc.) that it can manage.
 
 ```bash
 [webservers]
