@@ -167,3 +167,78 @@ lets try to run the playbook.
         name: httpd
         state: restarted
 ```
+### 🎯 Executing the Ansible Playbook
+
+To run the playbook, we simply execute the following command in the terminal:
+
+```bash
+ansible-playbook playbookname.yaml
+```
+This will install httpd, copy the custom index.html, and restart the service.
+
+### 🔄 Re-running the Playbook
+Let’s run the playbook again by executing the same command:
+
+bash
+Copy code
+ansible-playbook playbookname.yaml
+#### 🔍 What Do We Observe?
+🟢 The first time we ran the playbook, we saw 3 changed tasks: installation of httpd, copying of the index.html, and restarting the service.
+
+🔵 The second time we ran the playbook, we only saw 1 changed task: the restart of the httpd service.
+
+#### 🤔 Why Did This Happen?
+
+This is due to idempotency in Ansible. The installation and copying tasks did not run again because:
+
+httpd was already installed, so there was no need to install it again.
+The index.html file had not changed, so it wasn’t copied again.
+Only the restart task ran, because it was still in the playbook.
+
+#### How to Prevent Unnecessary Restarts?
+We don’t want the httpd service to restart every time we run the playbook. Ideally, we want to restart it only when there’s a change to the index.html file.
+
+#### ✅ Solution: Using Handlers
+Handlers are the solution! They allow us to trigger actions, such as restarting a service, only when a task makes a change. This ensures the service is restarted only when necessary.
+
+#### 📖 What Are Handlers?
+Handlers are special tasks that are executed only when triggered by another task. In Ansible:
+
+If a task makes a change, it can notify a handler to take action.
+The handler runs once, at the end of the playbook, regardless of how many tasks notify it.
+In our case:
+
+The copy task will notify the handler to restart httpd only when the index.html file changes.
+If the file hasn't changed, the handler will not run.
+
+📝 Example Playbook with Handlers
+```yaml
+---
+- name: Install and Configure HTTPD server.
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd
+      yum:
+       name: httpd
+       state: present
+    - name: Copy index.html file
+      copy:
+       src: /home/ansible/index.html
+       dest: /var/www/html/index.html
+    - name: Restart the server
+      service:
+        name: httpd
+        state: restarted
+      notify: Restart httpd
+  handlers:
+    - name: Restart httpd
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_os_family == "RedHat"
+```
+#### 🚀 How It Works:
+📝 The copy task copies the index.html file, but only notifies the Restart httpd handler if the file changes.
+
+🔄 The handler (Restart httpd or Restart apache2) will restart the service, but only if the index.html file has been modified.
