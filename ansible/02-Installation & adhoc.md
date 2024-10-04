@@ -98,7 +98,8 @@ Update your package list on the master node:
 
 ```bash
 sudo yum update -y
-sudo yum install epel-release ansible -y
+sudo amazon-linux-extras install epel -y
+sudo yum install ansible -y
 ```
 Verify the installation by checking the Ansible version:
 
