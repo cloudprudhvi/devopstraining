@@ -214,25 +214,21 @@ If the file hasn't changed, the handler will not run.
 📝 Example Playbook with Handlers
 ```yaml
 ---
-- name: Install and Configure HTTPD server.
+- name: install httpd
   hosts: all
   become: true
   tasks:
-    - name: Install httpd
+    - name: install htpd
       yum:
-       name: httpd
-       state: present
-    - name: Copy index.html file
-      copy:
-       src: /home/ansible/index.html
-       dest: /var/www/html/index.html
-    - name: Restart the server
-      service:
         name: httpd
-        state: restarted
-      notify: Restart httpd
+        state: latest
+    - name: copy
+      copy:
+        src: /home/ansible/index.html
+        dest: /var/www/html/index.html
+      notify: Restart
   handlers:
-    - name: Restart httpd
+    - name: Restart
       service:
         name: httpd
         state: restarted
