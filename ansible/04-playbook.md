@@ -127,4 +127,4 @@ In this example:
 
  - my_message is the variable name.
  - "Hello, Ansible students!" is the value stored in the variable.
- - The debug module is used to display the variable's value.
+ - The `debug` module in Ansible shows messages or variable values when a playbook runs, making it easier to check what's happening and fix problems. It's useful for seeing the details of tasks while they are running.
