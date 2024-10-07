@@ -197,3 +197,63 @@ The loop keyword with dict2items is used to iterate over the dictionary, creatin
 `item.value.shell`: Refers to the shell (e.g., /bin/bash or /bin/zsh).
 
 This playbook creates users with the specified attributes defined in the dictionary, making it easy to add or modify users just by updating the users dictionary.
+
+## Block & Rescue 
+Imagine you're running an Ansible playbook to deploy a web server, and during the process, something goes wrong, like a failed package installation. In this case, Ansible's block and rescue can be used to handle the error. The tasks inside the block section are run normally, but if any of them fail, the rescue section is triggered. The rescue tasks will take immediate action, like stopping services or cleaning up incomplete installations, to prevent further issues. This ensures that even if something fails, the system stays stable and doesn't remain in a broken state.
+
+### Block:
+A block groups tasks together. All tasks inside the block run normally, just like any other tasks. However, the difference is that if any task inside the block fails, you can catch that failure and handle it.
+
+### Rescue:
+If a task in the block fails, the rescue section will be triggered. The tasks in rescue are used to handle the failure—like cleaning up, undoing changes, or sending notifications.
+
+```yaml
+---
+- hosts: all
+  become: yes
+  tasks:
+    - block:
+        # Task 1: Install Apache
+        - name: Install Apache web server
+          apt:
+            name: httpd
+            state: present
+
+        # Task 2: Start Apache
+        - name: Start Apache service
+          service:
+            name: httpd
+            state: started
+
+      rescue:
+        # If any task in the block fails, these tasks will run.
+        
+        # Task 1: Stop Apache service
+        - name: Stop Apache service on failure
+          service:
+            name: httpd
+            state: stopped
+
+        # Task 2: Print failure message
+        - name: Notify about failure
+          debug:
+            msg: "Apache installation or configuration failed. Service has been stopped."
+```
+
+### What Happens:
+**Block**:
+
+Tries to install and start Apache.
+If these tasks succeed, the playbook continues as normal.
+
+**Rescue**:
+
+If any task in the block fails (e.g., if Apache fails to install), the tasks in rescue will run.
+
+In this case, the Apache service is stopped, and a message is displayed, letting you know the failure happened.
+
+**Why Use Block and Rescue?**
+
+Block and rescue are helpful when you want to clean up or recover if something goes wrong.
+
+It allows you to handle errors gracefully, ensuring that failed tasks don’t leave the system in a broken or incomplete state.
