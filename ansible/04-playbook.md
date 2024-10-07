@@ -128,3 +128,72 @@ In this example:
  - my_message is the variable name.
  - "Hello, Ansible students!" is the value stored in the variable.
  - The `debug` module in Ansible shows messages or variable values when a playbook runs, making it easier to check what's happening and fix problems. It's useful for seeing the details of tasks while they are running.
+
+### List (Array) Variables: Creating Multiple Users
+This example demonstrates how a list can be used to create multiple users on a system. Each user in the list is created with the user module.
+
+```yaml
+---
+- hosts: all
+  become: yes
+  vars:
+    users:
+      - user1
+      - user2
+      - user3
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"
+```
+### Dictionary Variables: Creating Multiple Users
+
+users list contains three usernames: user1, user2, and user3.
+The loop keyword iterates through the list, creating each user on the system.
+
+```yaml
+---
+- hosts: all
+  become: yes
+  vars:
+    users:
+      user1:
+        home: /home/john
+        shell: /bin/bash
+      user2:
+        home: /home/mary
+        shell: /bin/bash
+      user3:
+        home: /home/steve
+        shell: /bin/zsh
+  tasks:
+    - name: Create users from dictionary
+      user:
+        name: "{{ item.key }}"
+        home: "{{ item.value.home }}"
+        shell: "{{ item.value.shell }}"
+        state: present
+      loop: "{{ users | dict2items }}"
+```
+
+#### Explanation:
+`Variables (users Dictionary):`
+
+The users dictionary contains entries for three users: user1, user2, and user3.
+
+Each user is a key in the dictionary with their own attributes: home, and shell.
+
+`Tasks`:
+The user module is used to create each user on the system.
+
+The loop keyword with dict2items is used to iterate over the dictionary, creating users dynamically based on the provided attributes.
+
+`item.key`: Refers to the username (e.g., user1).
+
+`item.value.home`: Refers to the home directory for the user (e.g., /home/user1).
+
+`item.value.shell`: Refers to the shell (e.g., /bin/bash or /bin/zsh).
+
+This playbook creates users with the specified attributes defined in the dictionary, making it easy to add or modify users just by updating the users dictionary.
