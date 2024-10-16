@@ -69,11 +69,9 @@ Edit the tasks/main.yml file.
 
 ```yaml
 # roles/my_first_role/tasks/main.yml
-- name: Install Nginx
-  apt:
-    name: nginx
-    state: present
-
+- name: Enable and install NGINX 1.12 via amazon-linux-extras
+  command:
+    cmd: amazon-linux-extras install -y nginx1
 - name: Start Nginx
   service:
     name: nginx
@@ -82,7 +80,7 @@ Edit the tasks/main.yml file.
 - name: Deploy index.html using a template
   template:
     src: index.html.j2
-    dest: /var/www/html/index.html
+    dest: /usr/share/nginx/html/index.html
   notify: Restart Nginx
 
 ```
