@@ -58,6 +58,8 @@ When you install Kubernetes, you’re actually installing several important comp
 
 **Kubelet:** This is an agent that runs on every node (both master and worker). It makes sure that the containers are running properly.
 
+![Kubernetes Architecture](../images/kubernetes/kubernetes-cluster-architecture.svg)
+
 ### Master and Worker Node Components ⚙️
 #### What does the Master Node do?
 
