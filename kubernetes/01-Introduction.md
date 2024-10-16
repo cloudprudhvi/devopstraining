@@ -92,3 +92,8 @@ For example, you can use kubectl to:
 - See if all nodes are working.
 - Check if your app is running correctly.
 - Deploy new versions of your app.
+
+
+## INTERVIEW QUESTIONS
+- Explain Kubernetes Architecture
+- Why do we need kubernetes?
