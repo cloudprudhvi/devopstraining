@@ -1,6 +1,6 @@
-Kind Cluster Setup on EC2 Amazon Linux 🐳
-📋 Prerequisites
-Before setting up Kind, let's get started by creating an Amazon EC2 instance. Follow these steps:
+## Kind Cluster Setup on EC2 Amazon Linux 🐳
+#### 📋 Prerequisites
+Before setting up Kind, let's get started by creating an Amazon EC2 instance. Follow these steps
 
 #### Launch an EC2 Instance:
 
@@ -43,7 +43,7 @@ chmod +x ./kind
 Move the binary to /usr/local/bin so it’s globally accessible:
 
 ```bash
-sudo mv ./kind /usr/local/bin/kind
+sudo mv ./kind /usr/bin/kind
 ```
 
 Verify the installation:
@@ -103,7 +103,7 @@ sudo chmod +x kubectl
 Move the binary to a directory that is in the system's PATH:
 
 ```bash
-sudo mv kubectl /usr/local/bin/
+sudo mv kubectl /usr/bin/
 ```
 
 Verify the Kubectl installation:
