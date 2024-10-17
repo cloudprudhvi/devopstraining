@@ -155,3 +155,23 @@ Example to scale to 6 replicas:
 kubectl scale --replicas=6 replicaset/nginx-replicaset
 ```
 Note: When scaling using kubectl scale, the YAML file is not updated automatically. You must manually update it if needed.
+
+
+### Additioanl Information
+
+## Replication Controller Rollout:
+
+Imagine you have a web application running on 5 pods. You want to update the application to a new version.
+
+- A new replication controller is created with the desired number of pods (5) running the new version.
+- The system might immediately delete all 5 old pods and create 5 new pods with the new version, causing a brief period of downtime.
+
+## Replica Set Rollout:
+
+- A new replica set is created with the desired number of pods (5) running the new version.
+- The system might:
+  - Scale down the old replica set to 4 pods.
+  - Scale up the new replica set to 1 pod.
+  - Replace one pod from the old replica set with a pod from the new replica set.
+  - Repeat this process until all 5 pods are running the new version.
+
