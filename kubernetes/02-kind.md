@@ -1,4 +1,4 @@
-## Kind Cluster Setup on EC2 Amazon Linux 🐳
+## Kind Cluster Setup on EC2 Amazon Linux
 #### 📋 Prerequisites
 Before setting up Kind, let's get started by creating an Amazon EC2 instance. Follow these steps
 
