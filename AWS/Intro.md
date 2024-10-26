@@ -99,3 +99,28 @@ The high availability and global presence of AWS’s infrastructure ensure that 
 | **Time to Market**          | Slow, with complex setup                   | Fast, enabling rapid deployment and updates     |
 | **Availability Guarantee**  | Dependent on local infrastructure          | 99.99% SLA-backed availability (AWS EC2)        |
 
+# Course Topics
+
+- **IAM (Identity and Access Management)**: Manage access to AWS resources with secure, fine-grained permissions.
+- **VPC (Virtual Private Cloud)**: Create isolated networks within the AWS cloud for your resources.
+- **EC2 (Elastic Compute Cloud)**: Scalable virtual servers in the cloud for running applications.
+- **Auto Scaling**: Automatically adjust the number of EC2 instances to meet demand.
+- **Load Balancer**: Distribute incoming application traffic across multiple targets for high availability.
+- **S3 (Simple Storage Service)**: Secure, durable, and scalable object storage for files and backups.
+- **Lambda**: Run code without provisioning or managing servers with event-driven computing.
+- **SNS (Simple Notification Service)**: Send push notifications or emails to subscribers using a messaging service.
+- **SQS (Simple Queue Service)**: Decouple and manage messaging queues between distributed systems.
+- **KMS (Key Management Service)**: Create and control encryption keys to secure your data.
+- **RDS (Relational Database Service)**: Managed databases like MySQL, PostgreSQL, and SQL Server.
+- **Aurora**: A high-performance, scalable relational database compatible with MySQL and PostgreSQL.
+- **CloudFront**: A global content delivery network (CDN) to deliver content with low latency.
+- **API Gateway**: Create, publish, and manage secure RESTful and WebSocket APIs.
+- **CloudWatch**: Monitor AWS resources and applications with metrics and logs.
+- **CloudWatch Logs**: Store, access, and search log data from AWS services and custom applications.
+- **Alerts**: Set up alarms to get notified when metrics exceed specified thresholds.
+- **AWS Secrets Manager**: Securely store and manage sensitive information like API keys and passwords.
+- **Kinesis**: Process and analyze real-time streaming data for analytics and insights.
+- **Transit Gateway**: Connect multiple VPCs and on-premises networks through a central hub.
+- **VPC Peering**: Establish secure connections between VPCs for private communication.
+- **Athena**: Query data in S3 using standard SQL without needing a database server.
+
