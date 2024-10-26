@@ -8,6 +8,10 @@ Imagine you have an e-commerce business. You decide to host your application on 
 
 ![Datacentre](../images/aws/datacentre.webp)
 
+
+
+![Server](../images/aws/server.jfif)
+
 - **Real Estate**: You need space to store your servers. It could be a dedicated room or an entire data center, depending on your needs.
 - **Power Supply**: Servers require a continuous power supply. You might need backup generators to ensure your servers stay up during power outages.
 - **Cooling Systems**: Servers generate a lot of heat. Cooling systems are necessary to keep them running efficiently and avoid overheating.
@@ -18,13 +22,14 @@ Now, let’s say you have a **FESTIVE SALE** coming up, like BIg Billion Sale. Y
 
 ![sale](../images/aws/sale.jpg)
 
+![sale-growth](../images/aws/sale-growth.jpg)
+
 ### Challenges of Scaling with Traditional Servers
 
 - **Capacity Planning**: To prepare for increased traffic, you’ll need to buy more servers. But how many should you buy? Predicting the right amount of capacity is difficult.
 - **Cost**: Servers are expensive, and you need to purchase them upfront. You may end up buying more servers than you actually need.
 - **What Happens After the Sale?** Once the sale is over, traffic returns to normal levels. Now, you’re left with extra servers sitting idle, consuming power and requiring maintenance, but not generating value. This is **wasted investment**.
 
-![sale-growth](../images/aws/sale-growth.jpg)
 
 ### Unpredictable Situations
 
@@ -45,6 +50,32 @@ Now, let’s look at how **cloud computing** solves these problems. The cloud al
 - **Cost Efficiency**: With cloud computing, you pay for what you use. There’s no need for large upfront investments in hardware. You can start small and expand as your business grows.
 - **Disaster Recovery & High Availability**: Cloud providers offer solutions like **automated backups**, **geo-redundancy**, and **disaster recovery**. If there’s a problem in one data center, your application can automatically switch to another, keeping your business online.
 - **Innovation & Flexibility**: Cloud services allow you to experiment with new technologies and services quickly, without the need for complex hardware setups. Want to integrate AI or data analytics? The cloud offers pre-built tools and services to do this without needing to set up new infrastructure.
+
+### Cloud Leaders: AWS and the Gartner Magic Quadrant
+
+![Gartner](../images/aws/gartner.png)
+
+Amazon Web Services (AWS) is a leader in cloud computing, providing a comprehensive suite of services that power millions of businesses globally. According to the **Gartner Magic Quadrant for Cloud Infrastructure and Platform Services (CIPS)**, AWS has consistently been positioned as a **Leader** due to its rich feature set, global reach, and continuous innovation.
+
+- **Why is AWS a Leader?**
+  - **Market Share**: AWS holds a significant portion of the cloud market, making it a go-to provider for businesses of all sizes.
+  - **Breadth of Services**: AWS offers over **200 services**, ranging from compute and storage to machine learning, analytics, and IoT.
+  - **Innovation**: AWS continually launches new services and updates, maintaining its competitive edge in the cloud industry.
+
+### Global Infrastructure of AWS
+
+![GlobalInfra](../images/aws/awsglobalinfra.png)
+
+One of AWS's key strengths is its **global infrastructure**, allowing businesses to operate at a global scale with high availability and low latency.
+
+- **Regions and Availability Zones (AZs)**:
+  - AWS divides its global infrastructure into **Regions**, which are separate geographic areas, each containing multiple **Availability Zones**.
+  - An **Availability Zone (AZ)** is a distinct data center within a Region. Multiple AZs within a Region are connected via low-latency links, enabling customers to design fault-tolerant applications.
+  - As of now, AWS has **over 30 Regions** with **90+ Availability Zones** worldwide, and more are being added to expand AWS’s global footprint.
+
+- **Why is this Important?**
+  - **Redundancy**: With multiple AZs in each Region, AWS provides **high availability** by allowing you to deploy resources in different data centers within a single Region.
+  - **Geographical Reach**: AWS’s global presence means you can deploy your applications close to your customers, providing faster response times and a better user experience.
 
 ### Service Level Agreement (SLA) for AWS EC2
 
@@ -68,12 +99,3 @@ The high availability and global presence of AWS’s infrastructure ensure that 
 | **Time to Market**          | Slow, with complex setup                   | Fast, enabling rapid deployment and updates     |
 | **Availability Guarantee**  | Dependent on local infrastructure          | 99.99% SLA-backed availability (AWS EC2)        |
 
-## Conclusion
-
-By transitioning to the cloud, businesses can focus more on what matters: delivering great products and services to their customers, rather than worrying about server maintenance, scalability, and disaster recovery. Cloud computing offers a **flexible, scalable, and cost-effective** way to manage your IT needs, making it an ideal solution for businesses of all sizes.
-
-## Next Steps
-
-1. **Hands-On Lab**: We will set up a simple AWS EC2 instance to see how easy it is to get started with cloud computing.
-2. **Q&A Session**: Let’s discuss any questions or scenarios you have in mind.
-3. **Real-World Examples**: We’ll look at how companies like Netflix and Airbnb use AWS to handle their global traffic.
