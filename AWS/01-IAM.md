@@ -293,3 +293,19 @@ AWS provides several **best practices** for managing IAM securely and efficientl
    - IAM user credentials and Access Keys should never be shared. Each user should have their own credentials to ensure accountability and security.
 
 By following these best practices, you can ensure that your AWS environment is secure, scalable, and easy to manage.
+
+
+## TASKS & Interview Questions
+1) . Create IAM user and assign aws managed Permissions
+2) . Create a custom policy and attach to the user.
+3) . Attach a readonly permission to a User
+4) . Add a deny statement for the above created policy and attach to user and try to access the service
+5) . create a role
+6) . Attach a policy to role
+7) . Create access_key and secret_key for users and configure in your local machine.
+8) . Ability to Explain why should we use IAM Roles instead of access_keys in AWS environment.
+9) . Ability to explain difference between IAM role and IAM User
+10) . what are the different types of policies available in IAM
+11) . what happens to the inline policy granted to the user, if the user is deleted.
+12) . Is there a way to force user to rotate his console credentials? if yes/No how/why?
+    
