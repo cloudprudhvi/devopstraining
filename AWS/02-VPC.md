@@ -1,5 +1,9 @@
 # Gated Community Design
 
+
+![Gated](../images/aws/gated.jpg)
+
+
 ## 1. Gated Community Overview
 Imagine a **gated community** as our **VPC (Virtual Private Cloud)**. This community is a secure area within the larger city (the AWS cloud).  
 Inside this gated community, we have different types of housing:
