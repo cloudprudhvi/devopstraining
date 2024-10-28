@@ -4,6 +4,10 @@
 
 ### Key Components of IAM:
 
+
+![IAM-USERS](../images/aws/IAM-users.jpg)
+
+
 1. **Root Account**:
    - The **root account** is created automatically when you set up your AWS account. It is the account that has **full access** to all AWS services and resources within your account.
    - **Security Note**: The root account should **never be used** for day-to-day operations because of its unlimited permissions. Instead, you should create individual IAM users for regular tasks.
@@ -16,6 +20,8 @@
    - Each IAM user can be assigned a **unique set of credentials** (username, password, and/or access keys) to log in and interact with AWS resources.
    - Users can be granted different levels of permissions depending on their roles and responsibilities within the organization.
    - **Security Tip**: Assign permissions based on the **least privilege principle**—only grant the permissions a user needs to do their job, nothing more.
+  
+![IAM-Groups](../images/aws/IAM-groups.jpg)
 
 3. **IAM Groups**:
    - **IAM Groups** allow you to organize IAM users and manage permissions collectively.
@@ -248,11 +254,15 @@ The **AWS CLI** is a powerful tool that enables you to manage AWS services direc
 - **Open Source**: The CLI is open-source and can be found on [GitHub](https://github.com/aws/aws-cli).
 - **Alternative to Management Console**: It’s a preferred tool for DevOps teams and users who need quick and efficient management of AWS resources without using the web-based console.
 
+![IAM-ROle](../images/aws/IAM-role1.jpg)
+
 ## IAM Roles for AWS Services
 
 Certain AWS services need to perform actions on your behalf. For instance, an **EC2 instance** might need permission to read from an S3 bucket, or a **Lambda function** may need access to a DynamoDB table.
 
 Instead of embedding long-term credentials in your application, you assign an **IAM Role** to the service. The IAM role defines what actions the service is allowed to perform, and AWS manages the short-term credentials for the role.
+
+![IAM-ROle](../images/aws/IAM-role2.jpg)
 
 ### Common IAM Roles:
 - **EC2 Instance Roles**: This role is assigned to EC2 instances to allow them to interact with other AWS services without hardcoding credentials in the instance. For example, an EC2 instance with a role can automatically access S3, DynamoDB, etc.
