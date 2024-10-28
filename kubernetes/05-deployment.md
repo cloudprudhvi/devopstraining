@@ -54,7 +54,7 @@ Creating a deployment in Kubernetes follows a familiar process if you’ve alrea
    - Like other Kubernetes objects, we begin by creating a definition file (e.g., `deployment-definition.yml`).
    - The structure of the **deployment definition file** is very similar to the **ReplicaSet definition file**, but with one key difference:
      - The `kind` field is now set to `Deployment`.
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
