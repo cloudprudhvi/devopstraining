@@ -129,3 +129,24 @@ A **route table** is like a set of instructions that tells your network where to
 | **Use Case**         | Additional layer of security, broader control, IP blocking | Primary control for instance traffic     |
 
 NACLs and security groups work together to enhance network security within your VPC.
+
+## What is Bastion
+
+A **Bastion Host** acts as a secure bridge to connect to private instances within a VPC that do not have direct internet access. Here's how it works:
+
+## Role of the Bastion Host
+- It’s an intermediary server located in a public subnet with internet access. Users connect to this host to reach resources in private subnets, ensuring secure and controlled access.
+
+## How It Enables Access
+- Instead of exposing private instances to the public internet, you connect to the Bastion Host first. From there, you can securely access private servers. This maintains the privacy and security of the instances by restricting direct public access.
+
+## Network Flow
+- The user connects to the Bastion Host over the internet, and the Bastion Host connects internally to private instances using private IPs within the VPC. This ensures that private resources remain isolated from the external network.
+
+# NAT Gateway Explained in Simple Terms
+
+A **NAT Gateway**, or **Network Address Translation Gateway**, is a managed AWS service that allows instances in a **private subnet** to connect to the internet or other AWS services while ensuring that inbound internet traffic cannot reach them.
+
+## How It Works:
+- **Outbound Access**: Instances in private subnets can’t access the internet directly. The NAT Gateway acts as an intermediary that lets these instances send traffic out to the internet for tasks like software updates or API calls.
+- **Inbound Protection**: While the NAT Gateway facilitates outbound internet connections, it blocks incoming traffic initiated from the internet, keeping private resources secure.
