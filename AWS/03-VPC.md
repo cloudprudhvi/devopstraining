@@ -143,7 +143,7 @@ A **Bastion Host** acts as a secure bridge to connect to private instances withi
 ## Network Flow
 - The user connects to the Bastion Host over the internet, and the Bastion Host connects internally to private instances using private IPs within the VPC. This ensures that private resources remain isolated from the external network.
 
-# NAT Gateway Explained in Simple Terms
+# NAT Gateway
 
 A **NAT Gateway**, or **Network Address Translation Gateway**, is a managed AWS service that allows instances in a **private subnet** to connect to the internet or other AWS services while ensuring that inbound internet traffic cannot reach them.
 
