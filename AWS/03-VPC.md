@@ -100,3 +100,32 @@ A **route table** is like a set of instructions that tells your network where to
 - **Routes**: Each route table has a list of routes that specify the path for traffic. For example, traffic going to `0.0.0.0/0` can be directed to an **Internet Gateway (IGW)** for internet access.
 - **Subnet Association**: A route table can be linked to one or more subnets, which determines how traffic is routed for those subnets.
 - **Internet Access**: To make a subnet public, the route table must include a route that directs traffic to the IGW.
+
+## Network Access Control Lists (NACLs)
+- **Definition**: NACLs are like a firewall that controls traffic to and from subnets.
+- **One NACL per Subnet**: Each subnet must have one NACL. New subnets are automatically assigned the default NACL.
+- **NACL Rules**:
+  - Rules are numbered from 1 to 32766, with lower numbers having higher precedence.
+  - The first matching rule determines the traffic decision.
+  - Example: If rule #100 is `ALLOW 10.0.0.10/32` and rule #200 is `DENY 10.0.0.10/32`, the IP address will be allowed because rule #100 has a higher precedence.
+  - The last rule is an asterisk (`*`) and denies all traffic if no other rules match.
+  - AWS recommends creating rules in increments of 100 for better organization.
+- **Default Behavior**: Newly created NACLs deny all traffic by default.
+- **Use Case**: NACLs are effective for blocking specific IP addresses at the subnet level.
+
+## Security Groups
+- **Definition**: Security groups act as virtual firewalls for individual instances, controlling traffic at the instance level.
+- **Function**: They specify rules that allow traffic in or out of an instance.
+- **Stateful**: Security groups are stateful, so if traffic is allowed in, the response traffic is automatically allowed out.
+- **Instance-Level**: Security groups are applied directly to instances, providing more granular control.
+
+## Key Differences
+| **Feature**          | **NACL**                                   | **Security Group**                        |
+|----------------------|--------------------------------------------|-------------------------------------------|
+| **Level of Control** | Subnet-level                               | Instance-level                            |
+| **State**            | Stateless                                  | Stateful                                  |
+| **Rule Direction**   | Rules must be set for both inbound and outbound | Automatically allows responses for allowed traffic |
+| **Rule Precedence**  | Lower-numbered rules have higher precedence | No rule numbering; all rules are evaluated |
+| **Use Case**         | Additional layer of security, broader control, IP blocking | Primary control for instance traffic     |
+
+NACLs and security groups work together to enhance network security within your VPC.
