@@ -101,7 +101,7 @@ A **route table** is like a set of instructions that tells your network where to
 - **Subnet Association**: A route table can be linked to one or more subnets, which determines how traffic is routed for those subnets.
 - **Internet Access**: To make a subnet public, the route table must include a route that directs traffic to the IGW.
 
-## Network Access Control Lists (NACLs)
+### Network Access Control Lists (NACLs)
 - **Definition**: NACLs are like a firewall that controls traffic to and from subnets.
 - **One NACL per Subnet**: Each subnet must have one NACL. New subnets are automatically assigned the default NACL.
 - **NACL Rules**:
@@ -113,13 +113,13 @@ A **route table** is like a set of instructions that tells your network where to
 - **Default Behavior**: Newly created NACLs deny all traffic by default.
 - **Use Case**: NACLs are effective for blocking specific IP addresses at the subnet level.
 
-## Security Groups
+### Security Groups
 - **Definition**: Security groups act as virtual firewalls for individual instances, controlling traffic at the instance level.
 - **Function**: They specify rules that allow traffic in or out of an instance.
 - **Stateful**: Security groups are stateful, so if traffic is allowed in, the response traffic is automatically allowed out.
 - **Instance-Level**: Security groups are applied directly to instances, providing more granular control.
 
-## Key Differences
+
 | **Feature**          | **NACL**                                   | **Security Group**                        |
 |----------------------|--------------------------------------------|-------------------------------------------|
 | **Level of Control** | Subnet-level                               | Instance-level                            |
@@ -134,19 +134,19 @@ NACLs and security groups work together to enhance network security within your 
 
 A **Bastion Host** acts as a secure bridge to connect to private instances within a VPC that do not have direct internet access. Here's how it works:
 
-## Role of the Bastion Host
+### Role of the Bastion Host
 - It’s an intermediary server located in a public subnet with internet access. Users connect to this host to reach resources in private subnets, ensuring secure and controlled access.
 
-## How It Enables Access
+### How It Enables Access
 - Instead of exposing private instances to the public internet, you connect to the Bastion Host first. From there, you can securely access private servers. This maintains the privacy and security of the instances by restricting direct public access.
 
-## Network Flow
+### Network Flow
 - The user connects to the Bastion Host over the internet, and the Bastion Host connects internally to private instances using private IPs within the VPC. This ensures that private resources remain isolated from the external network.
 
-# NAT Gateway
+## NAT Gateway
 
 A **NAT Gateway**, or **Network Address Translation Gateway**, is a managed AWS service that allows instances in a **private subnet** to connect to the internet or other AWS services while ensuring that inbound internet traffic cannot reach them.
 
-## How It Works:
+### How It Works:
 - **Outbound Access**: Instances in private subnets can’t access the internet directly. The NAT Gateway acts as an intermediary that lets these instances send traffic out to the internet for tasks like software updates or API calls.
 - **Inbound Protection**: While the NAT Gateway facilitates outbound internet connections, it blocks incoming traffic initiated from the internet, keeping private resources secure.
