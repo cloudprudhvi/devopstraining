@@ -127,3 +127,4 @@ spec:
     persistentVolumeClaim:
       claimName: pvc-claim1
 ```
+https://killercoda.com/examples/scenario/kubernetes-volumes
