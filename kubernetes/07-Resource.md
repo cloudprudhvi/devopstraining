@@ -1,3 +1,4 @@
+https://killercoda.com/examples/scenario/kubernetes-2node-multi-step-verification
 ## Overview
 Namespaces are intended to support multiple users or teams working within a single Kubernetes cluster. They help create a kind of virtual cluster on top of an existing physical cluster. This capability is crucial in environments where you have to manage resources for multiple projects, applications, or stages of development, each with their own access controls and configuration settings.
 
