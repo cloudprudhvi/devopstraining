@@ -14,7 +14,19 @@ kind: Namespace
 metadata:
   name: <namespace-name>
 ````
-
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: order
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: myapp-container
+      image: nginx
+````
 ## Common Namespaces in Kubernetes
 - **default**: This is the namespace for objects with no other namespace. It’s the out-of-the-box namespace for Kubernetes resources that do not specify a namespace.
 - **kube-system**: This namespace contains the objects created by the Kubernetes system, primarily system-level objects critical for the functioning of the Kubernetes cluster itself.
