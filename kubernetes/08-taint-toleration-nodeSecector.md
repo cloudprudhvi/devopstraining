@@ -1,3 +1,4 @@
+https://killercoda.com/examples/scenario/kubernetes-2node-multi-step-verification
 ## Scheduling Control in Kubernetes: Taints, Tolerations, and Node Selector
 
 In Kubernetes, **Taints**, **Tolerations**, and **Node Selector** are powerful tools that allow you to control where specific tasks (or "pods") can run within your cluster. This guide explains these concepts and provides examples for using them effectively.
