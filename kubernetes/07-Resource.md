@@ -7,6 +7,13 @@ Namespaces are intended to support multiple users or teams working within a sing
 - **Access Control**: By using namespaces, you can implement policies that dictate who can access certain resources. Kubernetes Role-Based Access Control (RBAC) can be scoped to specific namespaces, allowing for detailed permissions management.
 - **Simplifying Resource Names**: Namespaces allow you to reuse names for resources. For example, you might have a pod named `test` in multiple namespaces, which is useful for keeping resource naming consistent across different environments like development, testing, and production.
 
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: <namespace-name>
+````
+
 ## Common Namespaces in Kubernetes
 - **default**: This is the namespace for objects with no other namespace. It’s the out-of-the-box namespace for Kubernetes resources that do not specify a namespace.
 - **kube-system**: This namespace contains the objects created by the Kubernetes system, primarily system-level objects critical for the functioning of the Kubernetes cluster itself.
