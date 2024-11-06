@@ -26,7 +26,6 @@
 - Use AWS Global Accelerator for optimized routing between regions.
 - Consider multi-region strategies for disaster recovery and business continuity.
 
----
 
 ## 2. AWS Availability Zones
 
@@ -44,7 +43,6 @@
 - AZs are interconnected using high-speed, low-latency networking, enabling highly available architectures.
 - Best practices involve deploying applications across multiple AZs to achieve fault tolerance and disaster recovery.
 
----
 
 ## 3. AWS Data Centers
 
@@ -56,8 +54,6 @@
 ### Security and Redundancy Measures
 - AWS Data Centers are built with multiple layers of redundancy in power, networking, and cooling systems.
 - Each data center is designed for failure isolation, ensuring minimal impact on the availability of services.
-
----
 
 ## 4. AWS Points of Presence (Edge Locations)
 
@@ -74,8 +70,6 @@
 - **Streaming Media**: Stream videos and live content efficiently.
 - **Web Acceleration**: Use CloudFront to cache and accelerate web pages.
 - **Security**: Enhance security by integrating AWS WAF (Web Application Firewall) with CloudFront.
-
----
 
 ## 5. Additional Best Practices
 
