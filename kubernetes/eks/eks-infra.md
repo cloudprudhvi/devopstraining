@@ -35,7 +35,7 @@ terraform -v
 
 ### providers.tf
 
-```json
+```hcl
 provider "aws" {
   default_tags {
     tags = local.tags
@@ -62,7 +62,7 @@ In `vpc.tf`, configure the VPC, availability zones, and subnets required for EKS
 
 Define the availability zones and create private and public subnets using CIDR ranges. Set the VPC configuration options, such as enabling the NAT gateway, DNS hostnames, Internet Gateway, and default network ACL, route tables, and security groups. Tags are added to the subnets for integration with Kubernetes, designating roles for ELB and internal ELB on public and private subnets.
 
-```json
+```hcl
 data "aws_availability_zones" "available" {
   state = "available"
 }
@@ -148,7 +148,7 @@ module "eks" {
 
 ```
 ### main.tf
-```json
+```hcl
 locals {
   tags = {
     created-by = "eks-workshop"
