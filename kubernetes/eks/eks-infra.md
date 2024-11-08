@@ -7,8 +7,8 @@ This guide provides step-by-step instructions for setting up an Amazon EKS (Elas
 - AWS Account with Administrator access.
 - IAM Role with `AdministratorAccess` policy attached.
 - Amazon EC2 instance running Amazon Linux 2.
+- Run everything from root user **sudo su**
 
----
 
 ## Step 1: Set Up EC2 Instance
 
@@ -194,8 +194,16 @@ variable "vpc_cidr" {
 3. Review the planned changes by running `terraform plan`.
 4. Apply the configuration to create the EKS cluster using `terraform apply -var="cluster_name=$EKS_CLUSTER_NAME" -auto-approve`.
 
----
-
-## Conclusion
-
 Your EKS cluster is now configured and deployed, complete with a VPC, subnets, and security settings. Verify the cluster status and node groups using the AWS Console or `kubectl`.
+
+- Download `kubectl` with `curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.4/2024-09-11/bin/linux/amd64/kubectl`.
+- Move `kubectl` to `/usr/local/bin/` with `cp kubectl /usr/local/bin/`.
+
+## Step 5: Verify AWS IAM role and EKS configuration:
+
+   - Use `aws sts get-caller-identity` to confirm your IAM role.
+   - Configure access to the EKS cluster with `aws eks update-kubeconfig --region us-west-1 --name dev`.
+   - Install Helm, a package manager for Kubernetes:
+   - Download the Helm installation script with `curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3`.
+   - Set permissions and run the script with `chmod 700 get_helm.sh` and `./get_helm.sh`.
+
