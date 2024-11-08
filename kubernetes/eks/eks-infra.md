@@ -23,6 +23,7 @@ unzip terraform_1.5.5_linux_amd64.zip
 sudo rm /usr/local/bin/terraform
 sudo mv terraform /usr/local/bin/
 terraform -v
+yum install git -y
 ```
 
 ## Step 2: Set Up Terraform Files
