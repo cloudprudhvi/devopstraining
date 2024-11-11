@@ -199,6 +199,8 @@ Your EKS cluster is now configured and deployed, complete with a VPC, subnets, a
 
 - Download `kubectl` with `curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.4/2024-09-11/bin/linux/amd64/kubectl`.
 - Move `kubectl` to `/usr/local/bin/` with `cp kubectl /usr/local/bin/`.
+- https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+- Amazon Linux comes with AWS CLI version 1, but In this case we need aws cli latest version, use the above link and Install the latest version
 
 ## Step 5: Verify AWS IAM role and EKS configuration:
 
